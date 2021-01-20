@@ -353,8 +353,6 @@ img {
   display: flex;
   justify-content: space-between;
   width: 206px;
-  /* margin-left: auto;
-  margin-right: auto; */
 }
 
 .networks-link {
@@ -562,9 +560,14 @@ li button:focus {
   color: var(--secondary-text-color);
 }
 
-.footer-link-bgc {
-  color: var(--secondary-text-color);
+.networks-link.footer-link-bgc {
+  fill: var(--secondary-text-color);
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+.networks-link.footer-link-bgc:hover,
+.networks-link.footer-link-bgc:focus {
+  background-color: var(--accent-color);
 }
 
 .footer .logo {
