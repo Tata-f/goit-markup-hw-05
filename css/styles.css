@@ -126,6 +126,8 @@ img {
 }
 
 .site-nav a {
+  display: flex;
+  flex-direction: column;
   font-weight: 500;
   padding-top: 32px;
   padding-bottom: 32px;
@@ -140,12 +142,20 @@ img {
   color: var(--accent-color);
 }
 
-.header .site-nav-studio {
+.header .current {
+  position: relative;
   color: var(--accent-color);
 }
 
-.header .site-nav-portfolio {
-  color: var(--accent-color);
+.current::after {
+  position: absolute;
+  bottom: 0px;
+  border-radius: 2px;
+  content: '';
+  width: 100%;
+  height: 4px;
+  margin-bottom: -2px;
+  background-color: var(--accent-color);
 }
 
 /* стилизация заголовков */
@@ -283,6 +293,15 @@ img {
 
 .our-work li + li {
   margin-left: 30px;
+}
+
+.our-work p {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.2;
+  text-align: center;
+  letter-spacing: 0.03em;
 }
 
 /* our team */
