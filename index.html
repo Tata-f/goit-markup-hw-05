@@ -48,7 +48,7 @@
        <section class="hero">
            <div class="container">
            <h1 class="hero-title">Эффективные решения для вашего бизнеса</h1>
-           <a href="#" class="button">Заказать услугу</a>
+           <a href="#" class="button" data-modal-open>Заказать услугу</a>
            </div>
        </section>
 
@@ -104,26 +104,33 @@
    <!--Чем занимаемся-->
    <section class="our-work">
         <div class="container">
+            <h2 class="section-title">Чем мы занимаемся</h2>
+            
+            <ul class="list">
+                <li>
+                    <div class="our-work-card">
+                        <img src="./images/box1.jpg" alt="Верстка" width="370">
+                        <p>Десктопные приложения</p>
+                    </div>
+                </li>
+                
+                <li>
+                    <div class="our-work-card">
+                        <img src="./images/box2.jpg" alt="Тестирование" width="370">
+                        <p>Мобильные приложения</p>
+                    </div>
+                </li>
 
-         <h2 class="section-title">Чем мы занимаемся</h2>
-       
-         <ul class="list">
-            <div class="overlay">
-                 <li><img src="./images/box1.jpg" alt="Верстка" width="370"></li>
-                 <p>Десктопные приложения</p>
-            </div>
-             
-            <div class="overlay">
-                 <li><img src="./images/box2.jpg" alt="Тестирование" width="370"></li>
-                 <p>Мобильные приложения</p>
-            </div>
+                
+                <li>
+                    <div class="our-work-card">
+                        <img src="./images/box3.jpg" alt="Дизайн" width="370">
+                        <p>Дизайнерские решения</p>
+                    </div>
+                </li>
+            </ul>
 
-            <div class="overlay">
-                 <li><img src="./images/box3.jpg" alt="Дизайн" width="370"></li>
-                 <p>Дизайнерские решения</p>
-            </div>
 
-         </ul>
         </div>
    </section>
 
@@ -292,6 +299,8 @@
     </div>
    </section>
 
+   <!-- Наши клиенты -->
+
    <section class="our-clients">
        <div class="container">
            <h2 class="section-title">Постоянные клиенты</h2>
@@ -403,5 +412,10 @@
     </div>
 </footer>
 
+<div class="backdrop is-hidden" data-modal>
+    <div class="modal" data-modal-close><svg width="30" height="30"><use href="./images/sprite.svg#icon-close"></use></svg></div>
+</div>
+
+<script src="./js/modal.js"></script>
 </body>
 </html>
