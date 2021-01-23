@@ -5,6 +5,9 @@
   --accent-color: #2196f3;
   --background-color: #2f303a;
   --fill-icons: #afb1b8;
+
+  --duration: 250ms;
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -77,6 +80,7 @@ img {
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
+
   fill: var(--fill-icons);
   color: var(--primary-text-color);
 }
@@ -92,6 +96,10 @@ img {
 }
 
 .header .contacts a {
+  transition-property: color, fill;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--timing-function);
+
   padding-top: 32px;
   padding-bottom: 32px;
 
@@ -128,10 +136,14 @@ img {
 .site-nav a {
   display: flex;
   flex-direction: column;
-  font-weight: 500;
-  padding-top: 32px;
-  padding-bottom: 32px;
+  transition-property: color;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--timing-function);
 
+  padding-bottom: 32px;
+  padding-top: 32px;
+
+  font-weight: 500;
   line-height: 1.1;
   letter-spacing: 0.02em;
   color: var(--title-color);
@@ -149,13 +161,24 @@ img {
 
 .current::after {
   position: absolute;
+  left: 0;
   bottom: 0px;
-  border-radius: 2px;
   content: '';
+  border-radius: 2px;
   width: 100%;
   height: 4px;
   margin-bottom: -2px;
+
+  transition-property: scaleY;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--timing-function);
+  transform-origin: bottom;
+
   background-color: var(--accent-color);
+}
+
+.current:hover::after {
+  transform: scaleY(2);
 }
 
 /* стилизация заголовков */
@@ -192,6 +215,7 @@ img {
   margin-right: auto;
   padding-top: 200px;
   padding-bottom: 200px;
+
   background-color: var(--background-color);
   background-image: linear-gradient(
       to right,
@@ -231,6 +255,7 @@ img {
 .button {
   display: inline-block;
   min-width: 200px;
+
   padding-top: 10px;
   padding-bottom: 10px;
   padding-right: 32px;
@@ -254,6 +279,7 @@ img {
 
 .features .icon {
   display: flex;
+
   margin-bottom: 30px;
   width: 270px;
   height: 120px;
@@ -277,6 +303,7 @@ img {
 .features p {
   margin-top: 0px;
   margin-bottom: 0px;
+
   line-height: 1.7;
   letter-spacing: 0.03em;
 }
@@ -295,13 +322,41 @@ img {
   margin-left: 30px;
 }
 
-.our-work p {
-  font-family: Roboto;
+.our-work-card {
+  position: relative;
+}
+
+.our-work-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  content: '';
+  width: 100%;
+  height: 70px;
+
+  background-color: rgba(47, 48, 58, 0.8);
+}
+
+.our-work-card p {
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 27px;
+
   font-weight: 500;
   font-size: 16px;
   line-height: 1.2;
-  text-align: center;
   letter-spacing: 0.03em;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--secondary-text-color);
 }
 
 /* our team */
@@ -357,6 +412,10 @@ img {
 
 .networks-link {
   display: flex;
+  transition-property: fill, background-color;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--timing-function);
+
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -400,22 +459,23 @@ img {
 
 .clients-link {
   display: flex;
+  transition-property: color;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--timing-function);
+
   align-items: center;
   justify-content: center;
   width: 170px;
   height: 90px;
   border: 1px solid var(--fill-icons);
   border-radius: 4px;
-  fill: var(--fill-icons);
-}
 
-.clients-link:hover svg,
-.clients-link:focus svg {
-  fill: var(--accent-color);
+  fill: var(--fill-icons);
 }
 
 .clients-link:hover,
 .clients-link:focus {
+  fill: var(--accent-color);
   border-color: var(--accent-color);
 }
 
@@ -439,6 +499,10 @@ img {
 }
 
 .horizontal-buttons li button {
+  transition-property: color, background-color;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--timing-function);
+
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 22px;
@@ -483,6 +547,12 @@ li button:focus {
   margin-bottom: 0px;
 }
 
+.portfolio-cards-link {
+  transition-property: shadow-box;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--timing-function);
+}
+
 .portfolio-cards-link:hover,
 .portfolio-cards-link:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
@@ -494,6 +564,40 @@ li button:focus {
   padding-bottom: 20px;
   padding-left: 24px;
   padding-right: 24px;
+}
+
+.portfolio-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.cards .portfolio-cards-link:hover .text,
+.cards .portfolio-cards-link:focus .text {
+  transform: translateY(-100%);
+}
+
+.portfolio-section .cards .text {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  transform: translateY(0);
+  transition-property: transform;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--timing-function);
+  width: 100%;
+  height: 100%;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 63px;
+  padding-bottom: 63px;
+
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+
+  color: var(--secondary-text-color);
+  background-color: var(--accent-color);
 }
 
 .portfolio-section .cards h2 {
@@ -520,11 +624,12 @@ li button:focus {
 /* футер */
 
 .footer {
-  background-color: var(--background-color);
   padding-top: 60px;
   padding-bottom: 60px;
   margin-right: auto;
   margin-left: auto;
+
+  background-color: var(--background-color);
 }
 
 .footer .container {
@@ -535,6 +640,7 @@ li button:focus {
 .footer-left {
   display: flex;
   flex-direction: column;
+
   margin-right: 70px;
   padding-left: 0;
   padding: 0;
@@ -544,6 +650,7 @@ li button:focus {
   display: flex;
   width: 206px;
   flex-direction: column;
+
   padding-left: 0;
   padding: 0;
 }
@@ -551,7 +658,7 @@ li button:focus {
 .footer-right .title {
   margin-top: 0px;
   margin-bottom: 20px;
-  font-family: Roboto;
+
   font-weight: bold;
   font-size: 14px;
   line-height: 1.1;
@@ -561,6 +668,10 @@ li button:focus {
 }
 
 .networks-link.footer-link-bgc {
+  transition-property: background-color;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--timing-function);
+
   fill: var(--secondary-text-color);
   background-color: rgba(255, 255, 255, 0.1);
 }
@@ -602,6 +713,10 @@ address {
 }
 
 .footer .contacts a {
+  transition-property: color;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--timing-function);
+
   line-height: 1.7;
   letter-spacing: 0.03em;
   color: rgba(255, 255, 255, 0.6);
@@ -610,4 +725,57 @@ address {
 .footer .contacts a:hover,
 .footer .contacts a:focus {
   color: var(--accent-color);
+}
+
+.backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  transition-property: opacity;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--timing-function);
+
+  background-color: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+}
+
+.backdrop.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 528px;
+  min-height: 581px;
+
+  transition-property: opacity;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--timing-function);
+
+  opacity: 1;
+  background-color: var(--secondary-text-color);
+}
+
+.backdrop.is-hidden .modal {
+  transform: opacity 0;
+}
+
+.modal svg {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  fill: none;
+  stroke: rgba(0, 0, 0, 0.1);
+  stroke-linejoin: miter;
+  stroke-linecap: butt;
+  stroke-miterlimit: 4;
+  stroke-width: 1;
 }
