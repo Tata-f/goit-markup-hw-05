@@ -426,15 +426,11 @@ img {
 .networks-link:hover,
 .networks-link:focus {
   background-color: var(--accent-color);
+  fill: var(--secondary-text-color);
 }
 
 .icons-networks a {
   fill: var(--fill-icons);
-}
-
-.networks-link:hover svg,
-.networks-link:focus svg {
-  fill: var(--secondary-text-color);
 }
 
 .our-team .cards {
@@ -457,16 +453,21 @@ img {
   width: 1170px;
 }
 
+.clients-list {
+  width: 170px;
+  height: 90px;
+}
+
 .clients-link {
   display: flex;
-  transition-property: color;
+  transition-property: fill, border;
   transition-duration: var(--duration);
   transition-timing-function: var(--timing-function);
 
   align-items: center;
   justify-content: center;
-  width: 170px;
-  height: 90px;
+  width: 100%;
+  height: 100%;
   border: 1px solid var(--fill-icons);
   border-radius: 4px;
 
